@@ -18,13 +18,13 @@ const compression = require('compression');
 const cors = require('cors');
 const AppError = require('./utilis/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const bookingController = require('./controllers/bookingController');
+// const bookingController = require('./controllers/bookingController');
 // Route Handler
 const roomRouter = require('./routes/roomRouter');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRouter');
 const viewRouter = require('./routes/viewRouter');
-const bookingRouter = require('./routes/bookingRouter');
+// const bookingRouter = require('./routes/bookingRouter');
 
 const app = express();
 
@@ -86,54 +86,6 @@ app.use(
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'", 'data:', 'blob:', 'https:', 'ws:'],
-        baseUri: ["'self'"],
-        fontSrc: ["'self'", 'https:', 'data:'],
-        scriptSrc: [
-          "'self'",
-          'https:',
-          'http:',
-          'blob:',
-          'https://*.mapbox.com',
-          'https://js.stripe.com',
-          'https://m.stripe.network',
-          'https://*.cloudflare.com',
-        ],
-        frameSrc: ["'self'", 'https://js.stripe.com'],
-        objectSrc: ["'none'"],
-        styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
-        workerSrc: [
-          "'self'",
-          'data:',
-          'blob:',
-          'https://*.tiles.mapbox.com',
-          'https://api.mapbox.com',
-          'https://events.mapbox.com',
-          'https://m.stripe.network',
-        ],
-        childSrc: ["'self'", 'blob:'],
-        imgSrc: ["'self'", 'data:', 'blob:'],
-        formAction: ["'self'"],
-        connectSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'data:',
-          'blob:',
-          'https://*.stripe.com',
-          'https://*.mapbox.com',
-          'https://*.cloudflare.com/',
-          'https://bundle.js:*',
-          'ws://127.0.0.1:*/',
-        ],
-        upgradeInsecureRequests: [],
-      },
-    },
-  })
-);
 
 if (
   process.env.NODE_ENV === 'development' ||
@@ -149,12 +101,12 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
-app.post(
-  '/webhook-checkout',
-  bodyParser.raw({ type: 'application/json' }),
-  bookingController.webhookCheckout
-);
-pp.use(express.json({ limit: '10kb' }));
+// app.post(
+//   '/webhook-checkout',
+//   bodyParser.raw({ type: 'application/json' }),
+//   bookingController.webhookCheckout
+// );
+app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 app.use(mongoSanitize());
 
@@ -182,7 +134,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/rooms', roomRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
-app.use('/api/v1/bookings', bookingRouter);
+// app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

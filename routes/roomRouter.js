@@ -1,36 +1,36 @@
 const express = require('express');
-const roomcontroller = require('../controllers/roomController');
+const Roomcontroller = require('../controllers/RoomController');
 const authController = require('../controllers/authController');
 const reviewRouter = require('./reviewRouter');
 const router = express.Router();
-router.use('/:roomId/reviews', reviewRouter);
+router.use('/:RoomId/reviews', reviewRouter);
 router
   .route('/top-5-cheap')
-  .get(roomcontroller.aliasToproom, roomcontroller.getAllrooms);
-router.route('/room-stats').get(roomcontroller.getroomStates);
+  .get(Roomcontroller.aliasTopRoom, Roomcontroller.getAllRooms);
+router.route('/room-stats').get(Roomcontroller.getRoomStates);
 router
   .route('/')
-  .get(roomcontroller.getAllrooms)
+  .get(Roomcontroller.getAllRooms)
   .post(
     authController.protect,
     authController.restrictTo('admin', 'manager'),
-    roomcontroller.createroom
+    Roomcontroller.createRoom
   );
 
 router
   .route('/:id')
-  .get(roomcontroller.getroom)
+  .get(Roomcontroller.getRoom)
   .patch(
     authController.protect,
     authController.restrictTo('admin', 'manager'),
-    roomcontroller.uploadroomImages,
-    roomcontroller.resizeroomImages,
-    roomcontroller.updateroom
+    Roomcontroller.uploadRoomImages,
+    Roomcontroller.resizeRoomImages,
+    Roomcontroller.updateRoom
   )
   .delete(
     authController.protect,
     authController.restrictTo('admin', 'manager'),
-    roomcontroller.deleteroom
+    Roomcontroller.deleteRoom
   );
 
 module.exports = router;

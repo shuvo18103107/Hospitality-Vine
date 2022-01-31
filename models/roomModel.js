@@ -61,7 +61,10 @@ const roomSchema = new mongoose.Schema(
     },
     images: [String],
     amenities: [String],
-    childrens: Number,
+    childrens: {
+      type: Number,
+      default: null
+    },
     createdAt: {
       type: Date,
       default: Date.now(), //it gives a timestamp but mongoose automatically create a good date formate

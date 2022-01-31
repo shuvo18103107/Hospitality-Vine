@@ -31,20 +31,20 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     select: false,
   },
-  // passwordConfirm: {
-  //   type: String,
-  //   required: [true, 'Please confirm your password'],
-  //   validate: {
-  //     validator: function (val) {
-  //       return this.password === val;
-  //     },
-  //     message: 'Passwords are not the same!',
-  //   },
-  //   select: false,
-  // },
-  // passwordChangedAt: Date,
-  // passwordResetToken: String,
-  // passwordResetExpires: Date,
+  passwordConfirm: {
+    type: String,
+    required: [true, 'Please confirm your password'],
+    validate: {
+      validator: function (val) {
+        return this.password === val;
+      },
+      message: 'Passwords are not the same!',
+    },
+    select: false,
+  },
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
   active: {
     type: Boolean,
     default: true,
