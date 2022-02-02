@@ -86,7 +86,7 @@ if (forgotSubmit) {
   forgotSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
-    console.log(email)
+    // console.log(email)
     forgotPassword(email);
   });
 }

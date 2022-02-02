@@ -5,7 +5,7 @@ const smtpTransport = require('nodemailer-smtp-transport')
 //whenever we sent an email we use this email class like new Email(user, resetUrl).sendWelcome() //suppose when a user sign in application that method say welcome
 module.exports = class Email {
   constructor(user, url) {
-    console.log(user,url)
+    // console.log(user,url)
     this.to = user.email;
     this.firstName = user.name.split(' ')[0];
     this.url = url;
@@ -16,7 +16,7 @@ module.exports = class Email {
     // when we are in production we actually want to send real emails using sendgrid
     //but if we are not in production in dev still we want to use mailtrap
     if (process.env.NODE_ENV === 'production') {
-      console.log('email sent for production');
+      // console.log('email sent for production');
       
        return nodemailer.createTransport(smtpTransport({
         service: 'gmail',

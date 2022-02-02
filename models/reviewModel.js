@@ -53,7 +53,7 @@ reviewSchema.statics.calcAverageRatings = async function (roomId) {
       },
     },
   ]);
-  console.log(stats);
+  // console.log(stats);
   if (stats.length > 0) {
     await Room.findByIdAndUpdate(roomId, {
       ratingsQuantity: stats[0].numRating,

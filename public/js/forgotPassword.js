@@ -20,7 +20,7 @@ export const forgotPassword = async (email) => {
       }, 1500);
     }
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     // alert(err.response.data.message)
     showAlert('error', err.response.data.message);
   }
