@@ -9,6 +9,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const AppError = require('./utilis/appError');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -16,7 +17,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
 const cors = require('cors');
-const AppError = require('./utilis/appError');
+const bodyParser = require('body-parser');
 const globalErrorHandler = require('./controllers/errorController');
 const bookingController = require('./controllers/bookingController');
 // Route Handler
@@ -101,11 +102,11 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
-// app.post(
-//   '/webhook-checkout',
-//   bodyParser.raw({ type: 'application/json' }),
-//   bookingController.webhookCheckout
-// );
+app.post(
+  '/webhook-checkout',
+  bodyParser.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 app.use(mongoSanitize());
@@ -134,7 +135,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/rooms', roomRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
-// app.use('/api/v1/bookings', bookingRouter);
+app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

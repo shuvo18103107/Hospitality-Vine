@@ -123,7 +123,7 @@ body {
   );
   background-image: linear-gradient(to right, #7dd56f, #28b487);
   -webkit-background-clip: text;
-  color: transparent;
+  color: #7a0b0b;
   letter-spacing: 0.1rem;
   line-height: 1.3;
   display: inline-block;
@@ -354,8 +354,8 @@ body {
 }
 
 .header__hero-img {
-  -o-object-fit: cover;
-  object-fit: cover;
+  /* -o-object-fit: cover;
+  object-fit: cover; */
   height: 100%;
   width: 100%;
   -o-object-position: 50% 25%;
@@ -366,14 +366,6 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    from(#7dd56f),
-    to(#28b487)
-  );
-  background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
   opacity: 0.85;
 }
 
@@ -386,7 +378,7 @@ body {
   transform: translate(-50%, -50%);
 }
 .heading-box__group {
-  color: #f7f7f7;
+  color: #4c0000;
   margin-top: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -425,7 +417,7 @@ body {
 }
 
 .section-description {
-  background-color: #fcfcfc;
+  background-color: #dfdfdf;
   margin-top: calc(0px - var(--section-rotate));
   display: -webkit-box;
   display: -ms-flexbox;
@@ -444,6 +436,7 @@ body {
   margin-right: 5rem;
 }
 .description-box .description__text {
+  font-weight: 600;
   font-size: 1.7rem;
 }
 .description-box .description__text:not(:last-child) {
@@ -451,7 +444,7 @@ body {
 }
 
 .overview-box {
-  background-color: #f7f7f7;
+  background-color: #f9faff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -481,7 +474,7 @@ body {
 .overview-box__icon {
   height: 2.25rem;
   width: 2.25rem;
-  fill: #55c57a;
+  fill: #7e0000;
 }
 .overview-box__label {
   font-weight: 700;
@@ -490,6 +483,7 @@ body {
   font-size: 1.4rem;
 }
 .overview-box__text {
+  font-weight: 600;
   text-transform: capitalize;
 }
 .overview-box__img {
@@ -575,14 +569,7 @@ body {
   padding: calc(5rem + var(--section-rotate)) 0;
   position: relative;
   z-index: 1000;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    from(#7dd56f),
-    to(#28b487)
-  );
-  background: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background: #f9faff;
   clip-path: polygon(
     0 var(--section-rotate),
     100% 0,
@@ -612,7 +599,7 @@ body {
 .reviews__card {
   width: 30rem;
   padding: 4rem;
-  background-color: #f7f7f7;
+  background-color: #280101;
   border-radius: 1.5em;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15) !important;
@@ -648,11 +635,13 @@ body {
   margin-right: 1.5rem;
 }
 .reviews__user {
+  color: white;
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 .reviews__text {
+  color: cornsilk;
   font-size: 1.5rem;
   margin-bottom: 2rem;
   font-style: italic;
@@ -670,7 +659,7 @@ body {
   margin-right: 1px;
 }
 .reviews__star--active {
-  fill: #55c57a;
+  fill: #be4040;
 }
 .reviews__star--inactive {
   fill: #bbb;
@@ -681,7 +670,7 @@ body {
   padding: 3rem;
   padding-bottom: 11rem;
   padding-top: calc(15rem + var(--section-rotate));
-  background-color: #f7f7f7;
+  background-color: #dfdfdf;
 }
 
 .cta {
@@ -723,7 +712,8 @@ body {
     from(#7dd56f),
     to(#28b487)
   );
-  background: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background: linear-gradient(to right bottom, #1b4289, #28b487);
+
   z-index: 10;
   -webkit-transform: translate(-35%, -50%);
   transform: translate(-35%, -50%);
@@ -753,7 +743,7 @@ body {
 }
 .cta__text {
   font-size: 1.9rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .user-view {
@@ -836,10 +826,11 @@ body {
   margin-left: 1.5rem;
 }
 .footer__nav a {
-  color: #777;
+  color: white;
   text-decoration: none !important;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  font-weight: 600;
 }
 .footer__nav a:hover,
 .footer__nav a:active {
@@ -847,7 +838,8 @@ body {
 }
 .footer__copyright {
   justify-self: end;
-  color: #999;
+  color: white;
+  font-weight: bold;
 }
 @media only screen and (max-width: 50em) {
   .footer__copyright {
@@ -1226,7 +1218,7 @@ body {
 .login-form {
   margin: 0 auto;
   max-width: 55rem;
-  background-color: #fff;
+  background-color: #280101;
   -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
   box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
   padding: 5rem 7rem;
@@ -1323,4 +1315,49 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+}
+.forgotPassform {
+  display: flex;
+}
+.forgotPass {
+  margin-left: auto !important;
+  cursor: pointer;
+}
+.forgotPass a {
+  color: ghostwhite;
+}
+.forgotPassLevel {
+  color: white;
+  font-size: 18px;
+}
+
+#reviewForm {
+  max-width: 70rem;
+}
+#formwidth {
+  width: 37vw;
+}
+.section-createReview {
+  margin-bottom: 81px;
+}
+.reviewHeading {
+  color: white;
+  text-transform: capitalize !important;
+  line-height: 3.3 !important;
+}
+#number {
+  color: #040639;
+}
+#reviewTextarea {
+  color: #040639;
+}
+#logincolor,
+#signincolor {
+  color: white;
+}
+#formColor {
+  color: white;
+}
+.labelColor {
+  color: white;
 }

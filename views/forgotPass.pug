@@ -1,0 +1,18 @@
+extends base
+block content
+  main.main
+    .login-form
+      h2.heading-secondary.ma-bt-lg.forgotPassLevel Enter Your Email to Reset Password
+      form.form
+        .form__group
+          label.form__label.labelColor(for='email') Email address
+          input#email.form__input.labelColor(
+            type='email',
+            placeholder='you@example.com',
+            required
+          )
+        .form__group
+          button.btn.btn--green.forgotSubmit Submit 
+
+
+

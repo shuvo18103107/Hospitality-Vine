@@ -63,7 +63,7 @@ const roomSchema = new mongoose.Schema(
     amenities: [String],
     childrens: {
       type: Number,
-      default: null
+      default: 0
     },
     createdAt: {
       type: Date,

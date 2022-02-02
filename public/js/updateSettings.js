@@ -5,7 +5,7 @@ import { showAlert } from './alert';
 export const updateSettings =async (data,type)=>{
   //2 ta way te node e data pathano jai 1. using axios or using html form to directly send form data to server
   try{
-    const url = type==='password'?'http://127.0.0.1:8000/api/v1/users/updateMyPassword': 'http://127.0.0.1:8000/api/v1/users/updateMe'
+    const url = type==='password'?'/api/v1/users/updateMyPassword': '/api/v1/users/updateMe'
     const res = await axios({
       method: 'PATCH',
       url,
@@ -22,6 +22,7 @@ export const updateSettings =async (data,type)=>{
     } 
   }catch(err)
   {
+    // console.log(err)
     // alert(err.response.data.message)
     showAlert('error',err.response.data.message )
 

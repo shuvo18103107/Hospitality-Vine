@@ -82,7 +82,7 @@ const rooms = await Room.find({_id: {$in: roomIds}})
 
 })
 
-exports.getMyReviews = catchAsync(async (req, res, next) => {
+exports.getMyReviews = catchAsync(async (req, res,next) => {
   const reviews = await Review.find({ user: req.user._id }).populate({
     path: 'room',
     select: 'imageCover name'
