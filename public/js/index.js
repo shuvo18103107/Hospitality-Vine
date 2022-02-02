@@ -86,6 +86,7 @@ if (forgotSubmit) {
   forgotSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
+    console.log(email)
     forgotPassword(email);
   });
 }
@@ -99,14 +100,14 @@ if (ResetBtn) {
     resetPassword(token, password, passwordConfirm);
   });
 }
-// if (bookBtn) {
-//   bookBtn.addEventListener('click', async e => {
-//     bookBtn.textContent = 'processing...⌛';
-//     const roomID = e.target.dataset.roomId;
-//     await bookRoom(roomID);
-//     bookBtn.textContent = 'Book Now';
-//   });
-// }
+if (bookBtn) {
+  bookBtn.addEventListener('click', async e => {
+    bookBtn.textContent = 'processing...⌛';
+    const roomID = e.target.dataset.roomId;
+    await bookRoom(roomID);
+    bookBtn.textContent = 'Book Now';
+  });
+}
 
 if (reviewBtn) {
   reviewBtn.addEventListener('click', async (e) => {

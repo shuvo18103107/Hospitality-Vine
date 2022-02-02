@@ -6,9 +6,11 @@ export const forgotPassword = async (email) => {
       method: 'POST',
       url: '/api/v1/users/forgotPassword',
       data: {
+        // email:email
         email,
       },
     });
+    
     //now check we get the data back successfully or not
     if (res.data.status === 'success') {
       showAlert('success', 'A Password Reset Token is Sent to Your Email📧');
@@ -18,6 +20,7 @@ export const forgotPassword = async (email) => {
       }, 1500);
     }
   } catch (err) {
+    console.log(err)
     // alert(err.response.data.message)
     showAlert('error', err.response.data.message);
   }

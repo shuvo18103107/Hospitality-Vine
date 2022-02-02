@@ -164,19 +164,21 @@ exports.restrictTo = (...roles) => {
 
 //reset password functionality
 exports.forgotPassword = catchAsync(async (req, res, next) => {
+
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     return next(new AppError('There is no user with that email address.', 404));
   }
 
+
   const resetToken = user.createPasswordResetToken();
+  console.log(` ResetTokenCreated : ${resetToken}`)
 
-  await user.save({ validateBeforeSave: false });
-
+  await user.save({ validateBeforeSave: false }); 
+  //now send email
   try {
     let resetUrl;
     if (process.env.NODE_ENV === 'production') {
-  
       resetUrl = `${req.protocol}://${req.get(
         'host'
       )}/resetPassword/${resetToken}`;
@@ -185,19 +187,17 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
         'host'
       )}/api/v1/users/resetPassword/${resetToken}`;
     }
-
+  // console.log({ resetToken }, resetUrl);
+    
     await new Email(user, resetUrl).sendPasswordReset();
 
     res.status(200).json({
       status: 'success',
-      message: 'Token sent to email!', 
-
+      message: 'Token sent to email!',
     });
   } catch (err) {
-  
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
- 
     await user.save({ validateBeforeSave: false });
     return next(
       new AppError(
@@ -208,16 +208,16 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 exports.resetPassword = catchAsync(async (req, res, next) => {
+
   const hashedToken = crypto
     .createHash('sha256')
     .update(req.params.token)
     .digest('hex');
-
   const user = await User.findOne({
     passwordResetToken: hashedToken,
     passwordResetExpires: { $gt: Date.now() },
-  }); 
- 
+  });
+
   if (!user) {
     return next(new AppError('Token is invalid or has expired', 400));
   }
@@ -228,7 +228,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   await user.save(); 
   createSendToken(user, 200, req, res);
 });
-
 exports.updatePassword = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('+password');
 

@@ -9103,6 +9103,7 @@ var forgotPassword = /*#__PURE__*/function () {
               method: 'POST',
               url: '/api/v1/users/forgotPassword',
               data: {
+                // email:email
                 email: email
               }
             });
@@ -9119,16 +9120,17 @@ var forgotPassword = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context.next = 10;
+            _context.next = 11;
             break;
 
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            // alert(err.response.data.message)
+            console.log(_context.t0); // alert(err.response.data.message)
+
             (0, _alert.showAlert)('error', _context.t0.response.data.message);
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -9671,6 +9673,7 @@ if (forgotSubmit) {
   forgotSubmit.addEventListener('click', function (e) {
     e.preventDefault();
     var email = document.getElementById('email').value;
+    console.log(email);
     (0, _forgotPassword.forgotPassword)(email);
   });
 }
@@ -9683,33 +9686,25 @@ if (ResetBtn) {
     var passwordConfirm = document.getElementById('password-confirm').value;
     (0, _forgotPassword.resetPassword)(token, password, passwordConfirm);
   });
-} // if (bookBtn) {
-//   bookBtn.addEventListener('click', async e => {
-//     bookBtn.textContent = 'processing...⌛';
-//     const roomID = e.target.dataset.roomId;
-//     await bookRoom(roomID);
-//     bookBtn.textContent = 'Book Now';
-//   });
-// }
+}
 
-
-if (reviewBtn) {
-  reviewBtn.addEventListener('click', /*#__PURE__*/function () {
+if (bookBtn) {
+  bookBtn.addEventListener('click', /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(e) {
-      var room, user, rating, review;
+      var roomID;
       return regeneratorRuntime.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              e.preventDefault();
-              room = e.target.dataset.room;
-              user = document.getElementById('reviewTextarea').dataset.user;
-              rating = document.getElementById('number').value;
-              review = document.getElementById('reviewTextarea').value;
-              _context3.next = 7;
-              return (0, _createReview.createReview)(review, rating, user, room);
+              bookBtn.textContent = 'processing...⌛';
+              roomID = e.target.dataset.roomId;
+              _context3.next = 4;
+              return bookRoom(roomID);
 
-            case 7:
+            case 4:
+              bookBtn.textContent = 'Book Now';
+
+            case 5:
             case "end":
               return _context3.stop();
           }
@@ -9723,59 +9718,54 @@ if (reviewBtn) {
   }());
 }
 
+if (reviewBtn) {
+  reviewBtn.addEventListener('click', /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(e) {
+      var room, user, rating, review;
+      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              e.preventDefault();
+              room = e.target.dataset.room;
+              user = document.getElementById('reviewTextarea').dataset.user;
+              rating = document.getElementById('number').value;
+              review = document.getElementById('reviewTextarea').value;
+              _context4.next = 7;
+              return (0, _createReview.createReview)(review, rating, user, room);
+
+            case 7:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
+    };
+  }());
+}
+
 if (deleteReviewBtn) {
   deleteReviewBtn.forEach(function (btn) {
     btn.addEventListener('click', /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(e) {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(e) {
         var reviewId;
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 reviewId = e.target.dataset.reviewId;
                 e.target.closest('.reviews-card').querySelector('.deleting').classList.add('active');
-                _context4.next = 4;
+                _context5.next = 4;
                 return (0, _createReview.deleteReview)(reviewId);
 
               case 4:
                 e.target.closest('.reviews-card').remove();
 
               case 5:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }));
-
-      return function (_x4) {
-        return _ref4.apply(this, arguments);
-      };
-    }());
-  });
-}
-
-if (saveReviewBtn) {
-  saveReviewBtn.forEach(function (btn) {
-    btn.addEventListener('click', /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(e) {
-        var reviewtoken, review, rating, data;
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                e.preventDefault();
-                reviewtoken = e.target.dataset.reviewtoken;
-                review = e.target.closest('.reviews-card').querySelector('.review-card__review').textContent;
-                rating = e.target.closest('.reviews-card').querySelector('.review-number').textContent;
-                data = {
-                  rating: rating,
-                  review: review
-                };
-                _context5.next = 7;
-                return (0, _createReview.editReview)(reviewtoken, data);
-
-              case 7:
               case "end":
                 return _context5.stop();
             }
@@ -9785,6 +9775,41 @@ if (saveReviewBtn) {
 
       return function (_x5) {
         return _ref5.apply(this, arguments);
+      };
+    }());
+  });
+}
+
+if (saveReviewBtn) {
+  saveReviewBtn.forEach(function (btn) {
+    btn.addEventListener('click', /*#__PURE__*/function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(e) {
+        var reviewtoken, review, rating, data;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                e.preventDefault();
+                reviewtoken = e.target.dataset.reviewtoken;
+                review = e.target.closest('.reviews-card').querySelector('.review-card__review').textContent;
+                rating = e.target.closest('.reviews-card').querySelector('.review-number').textContent;
+                data = {
+                  rating: rating,
+                  review: review
+                };
+                _context6.next = 7;
+                return (0, _createReview.editReview)(reviewtoken, data);
+
+              case 7:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      return function (_x6) {
+        return _ref6.apply(this, arguments);
       };
     }());
   });
@@ -9834,7 +9859,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1176" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9587" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
