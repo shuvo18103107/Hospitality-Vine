@@ -32,7 +32,7 @@ body {
   font-weight: 300;
   font-family: 'Lato', sans-serif;
   color: #777;
-  padding: 3rem;
+  /* padding: 3rem; */
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,7 +44,7 @@ body {
 }
 
 .main {
-  background-color: #f7f7f7;
+  background-color: #e9edf9;
   padding: 8rem 6rem;
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -143,7 +143,7 @@ body {
 .heading-primary,
 .heading-tertirary {
   color: #fff;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 300;
 }
 .heading-primary span,
@@ -159,11 +159,7 @@ body {
     from(rgba(125, 213, 111, 0.85)),
     to(rgba(40, 180, 135, 0.85))
   );
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(0 0 0 / 85%),
-    rgba(40, 180, 135, 0.85)
-  );
+  background-image: linear-gradient(to bottom right, rgb(0 0 0 / 85%), #500e78);
 }
 
 .heading-primary {
@@ -232,7 +228,7 @@ body {
 }
 
 .btn--green {
-  background-color: #55c57a;
+  background-color: #7e1500;
   color: #fff;
 }
 .btn--green::after {
@@ -300,7 +296,7 @@ body {
 }
 
 .header {
-  background-color: #444;
+  background-color: #540000;
   padding: 0 5rem;
   height: 8rem;
   position: relative;
@@ -784,7 +780,7 @@ body {
     from(#7dd56f),
     to(#28b487)
   );
-  background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background-image: linear-gradient(to bottom right, rgb(0 0 0 / 85%), #500e78);
   padding: 4rem 0;
 }
 .user-view__content {
@@ -800,7 +796,7 @@ body {
 }
 
 .footer {
-  background-color: #f7f7f7;
+  background-color: #540000;
   padding: 6rem 4rem 3rem 4rem;
   font-size: 1.4rem;
   display: grid;
@@ -902,7 +898,7 @@ body {
 .nav__el:link,
 .nav__el:visited {
   color: #f7f7f7;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 1.6rem;
   text-decoration: none;
   display: -webkit-inline-box;
@@ -913,7 +909,7 @@ body {
   align-items: center;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  font-weight: 400;
+  font-weight: bold;
   background: none;
   border: none;
   cursor: pointer;
@@ -1137,9 +1133,9 @@ body {
   padding: 2.5rem 3rem;
 }
 .card__sub-heading {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-weight: bold;
   grid-column: 1 / -1;
 }
 .card__text {
@@ -1167,7 +1163,7 @@ body {
   fill: #55c57a;
 }
 .card__footer {
-  background-color: #f7f7f7;
+  background-color: #e1f4ff;
   padding: 2.5rem 3rem;
   border-top: 1px solid #f1f1f1;
   font-size: 1.4rem;

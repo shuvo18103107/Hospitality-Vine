@@ -18,13 +18,13 @@ const compression = require('compression');
 const cors = require('cors');
 const AppError = require('./utilis/appError');
 const globalErrorHandler = require('./controllers/errorController');
-// const bookingController = require('./controllers/bookingController');
+const bookingController = require('./controllers/bookingController');
 // Route Handler
 const roomRouter = require('./routes/roomRouter');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRouter');
 const viewRouter = require('./routes/viewRouter');
-// const bookingRouter = require('./routes/bookingRouter');
+const bookingRouter = require('./routes/bookingRouter');
 
 const app = express();
 

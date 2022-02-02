@@ -3,44 +3,44 @@ extends base
 block content
   main.main
       .card-container
-        each data in tours
+        each data in rooms
           .card
             .card__header
               .card__picture
                 .card__picture-overlay &nbsp;
-                img.card__picture-img(src=`img/tours/${data.imageCover}` alt=`${data.name}`)
+                img.card__picture-img(src=`img/rooms/${data.imageCover}` alt=`${data.name}`)
               h3.heading-tertirary
-                span= data.name
+                span=data.name
             .card__details
-              h4.card__sub-heading= `${data.difficulty} ${data.duration}-day tour`
+              h4.card__sub-heading=`${data.roomType} ${data.priceDiscount}% offer`
               p.card__text
-                = data.summary
+                =data.summary
               .card__data
                 svg.card__icon
-                  use(xlink:href='img/icons.svg#icon-map-pin')
-                span= data.startLocation.description
+                  use(xlink:href='img/icons.svg#icon-home')
+                span=`${data.beds} bed`
               .card__data
                 svg.card__icon
-                  use(xlink:href='img/icons.svg#icon-calendar')
-                span=data.startDates[0].toLocaleString('en-us', {month:'long',year:'numeric'})
+                  use(xlink:href='img/icons.svg#icon-clock')
+                span=`${data.checkIn} checkIn`
               .card__data
                 svg.card__icon
                   use(xlink:href='img/icons.svg#icon-flag')
-                span= `${data.locations.length} stops`
+                span=`${data.roomSize}`
               .card__data
                 svg.card__icon
-                  use(xlink:href='img/icons.svg#icon-user')
-                span= `${data.maxGroupSize} people`
+                  use(xlink:href='img/icons.svg#icon-clock')
+                span=`${data.checkOut} checkOut`
             .card__footer
               p
-                span.card__footer-value= `$${data.price}`
+                span.card__footer-value= `$${data.costPerNight}`
                 |  
                 span.card__footer-text per person
               p.card__ratings
                 span.card__footer-value= data.ratingsAverage
                 | 
                 span.card__footer-text= `rating (${data.ratingsQuantity})` 
-              a.btn.btn--green.btn--small(href= `/tour/${data.slug}`) Details
+              a.btn.btn--green.btn--small(href= `/room/${data.slug}`) Details
 
 //- indent thick rakhte hole html to pug converter theke copy kore pug ekhane block content thakle 2 space diye past korte hobe 
 //- each data in tours bolte ekahne tour array er vitor document gula ace segula data hisabe variable dore foreach loop kore render korci proti ta data express e evabe
