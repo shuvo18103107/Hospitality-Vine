@@ -33,7 +33,7 @@ exports.uploadRoomImages = upload.fields([
 
 
 exports.resizeRoomImages = catchAsync(async(req, res, next) => {
-    console.log(req.files);
+    // console.log(req.files);
     if (!req.files.imageCover || !req.files.images) return next();
     req.body.imageCover= `room-${req.params.id?req.params.id:'image'}-${Date.now()}-cover.jpeg`
    await sharp( req.files.imageCover[0].buffer) 
