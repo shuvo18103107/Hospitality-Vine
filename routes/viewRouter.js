@@ -11,7 +11,7 @@ router.get('/room/:slug',authController.isLoggedIn, viewController.getRoom)
 router.get('/signup',authController.isLoggedIn,viewController.signup)
 router.get('/login', authController.isLoggedIn,viewController.login)
 router.get('/me', authController.protect, viewController.getAccount)
-router.get('/my-tours', authController.protect, viewController.getMyRooms)
+router.get('/my-rooms ', authController.protect, viewController.getMyRooms)
 router.get('/forgotPass', viewController.forgotPassword)
 router.get('/resetPassword/:token', viewController.resetPassword)
 router.get('/my-reviews', authController.protect, viewController.getMyReviews);
