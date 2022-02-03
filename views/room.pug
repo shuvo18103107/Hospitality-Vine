@@ -1,5 +1,5 @@
 extends base
-block append head 
+block append head
 include _reviewCard
 mixin overviewBox(label, text, icon)
   .overview-box__detail
@@ -38,12 +38,12 @@ block content
     .description-box
       h2.heading-secondary.ma-bt-lg= `About ${room.name}`
       - const paragraphs  = room.description.split('\n');
-      each P in paragraphs 
+      each P in paragraphs
         p.description__text= P
   section.section-pictures
     each img,index in room.images
       .picture-box
-        img.picture-box__img(src=`/img/rooms/${img}` alt=`${index+1}`, class=`picture-box__img--${index+1}`) 
+        img.picture-box__img(src=`/img/rooms/${img}` alt=`${index+1}`, class=`picture-box__img--${index+1}`)
   section.section-reviews
     .reviews
       each review in room.reviews
@@ -59,7 +59,7 @@ block content
             label.form__label(for='text') Write Your Comment
             textarea#reviewTextarea(data-user=`${user?user.id:null}`).form__input(rows='6' cols='50' name='comment' placeholder='Write Review...')
           .form__group.forgotPassform
-            button.btn.btn--green#submitReview(data-room=`${room.id}`) Submit 
+            button.btn.btn-text#submitReview(data-room=`${room.id}`) Submit
   section.section-cta
     .cta
       .cta__img.cta__img--logo
@@ -71,7 +71,7 @@ block content
         p.cta__text=`${room.costPerNight}$ Only. ${room.priceDiscount}% Offer. Infinite features. Make it yours today!`
         if user
           button.btn.btn--green.span-all-rows#book-room(data-room-id=`${room._id}`) Book room now!
-        else 
+        else
           a.button.btn.btn--green.span-all-rows(href='/login') Log in to book room
 
 //- block content ba name kicu ekta diye sekhane ekta place holder rakhi r other template theke extend korle sei placeholder er jaigai replace hoye bose , r ekta way te amra block extend korte pari like base file e head e kicu file ace amra js ba other content jodi add korte chai tahole prepend dile age add hobe append dile pore add hoi

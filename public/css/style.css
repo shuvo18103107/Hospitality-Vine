@@ -523,7 +523,7 @@ body {
       100% 0,
       100% calc(100% - var(--section-rotate)),
       0 100%); */
-  margin-top: calc(0px - var(--section-rotate));
+  margin-top: calc(70px - var(--section-rotate));
   position: relative;
   z-index: 1000;
 }
@@ -1441,7 +1441,7 @@ body {
 }
 
 .reviewHeading {
-  color: white;
+  /* color: white; */
   text-transform: capitalize !important;
   line-height: 3.3 !important;
 }
