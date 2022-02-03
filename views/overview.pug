@@ -34,15 +34,15 @@ block content
             .card__footer
               p
                 span.card__footer-value= `$${data.costPerNight}`
-                |  
-                span.card__footer-text per person
+                |
+                span.card__footer-text  per person
               p.card__ratings
                 span.card__footer-value= data.ratingsAverage
-                | 
-                span.card__footer-text= `rating (${data.ratingsQuantity})` 
-              a.btn.btn--green.btn--small(href= `/room/${data.slug}`) Details
+                |
+                span.card__footer-text= `rating (${data.ratingsQuantity})`
+              a.btn.btn-text(href= `/room/${data.slug}`) Details
 
-//- indent thick rakhte hole html to pug converter theke copy kore pug ekhane block content thakle 2 space diye past korte hobe 
+//- indent thick rakhte hole html to pug converter theke copy kore pug ekhane block content thakle 2 space diye past korte hobe
 //- each data in tours bolte ekahne tour array er vitor document gula ace segula data hisabe variable dore foreach loop kore render korci proti ta data express e evabe
 //- variable amra pug e set kori like span = variable.somethings, string e variable set korte hole template string way te `${variable.something}`
 //- option theke data pug e direct variable hisave acess korte chaile = or # diye kora jai
