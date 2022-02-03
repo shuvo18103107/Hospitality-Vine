@@ -4,7 +4,7 @@ import { showAlert } from './alert';
 import { auth, logout } from './auth.js';
 import { createReview, deleteReview, editReview } from './createReview';
 import { forgotPassword, resetPassword } from './forgotPassword';
-import { bookRoom } from './stripe';
+// import { bookRoom } from './stripe';
 import { updateSettings } from './updateSettings';
 //Dom Elements
 const LoginForm = document.querySelector('.form');
@@ -100,14 +100,14 @@ if (ResetBtn) {
     resetPassword(token, password, passwordConfirm);
   });
 }
-if (bookBtn) {
-  bookBtn.addEventListener('click', async e => {
-    bookBtn.textContent = 'processing...⌛';
-    const roomID = e.target.dataset.roomId;
-    await bookRoom(roomID);
-    bookBtn.textContent = 'Book Now';
-  });
-}
+// if (bookBtn) {
+//   bookBtn.addEventListener('click', async e => {
+//     bookBtn.textContent = 'processing...⌛';
+//     const roomID = e.target.dataset.roomId;
+//     await bookRoom(roomID);
+//     bookBtn.textContent = 'Book Now';
+//   });
+// }
 
 if (reviewBtn) {
   reviewBtn.addEventListener('click', async (e) => {
