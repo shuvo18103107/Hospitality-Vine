@@ -19,13 +19,13 @@ const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const globalErrorHandler = require('./controllers/errorController');
-// const bookingController = require('./controllers/bookingController');
+const bookingController = require('./controllers/bookingController');
 // Route Handler
 const roomRouter = require('./routes/roomRouter');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRouter');
 const viewRouter = require('./routes/viewRouter');
-// const bookingRouter = require('./routes/bookingRouter');
+const bookingRouter = require('./routes/bookingRouter');
 
 const app = express();
 
@@ -102,11 +102,11 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
-// app.post(
-//   '/webhook-checkout',
-//   bodyParser.raw({ type: 'application/json' }),
-//   bookingController.webhookCheckout
-// );
+app.post(
+  '/webhook-checkout',
+  bodyParser.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 app.use(mongoSanitize());
@@ -135,7 +135,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/rooms', roomRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
-// app.use('/api/v1/bookings', bookingRouter);
+app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
