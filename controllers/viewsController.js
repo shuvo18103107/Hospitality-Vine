@@ -1,5 +1,5 @@
 const Room = require('../models/roomModel');
-// const Booking = require('../models/bookingModel');
+const Booking = require('../models/bookingModel');
 const Review = require('../models/reviewModel');
 const catchAsync = require('../utilis/catchAsync');
 const AppError = require('../utilis/appError');
@@ -69,13 +69,10 @@ exports.getAccount = (req, res) => {
 
 exports.getMyRooms = catchAsync(async(req,res,next)=>{
   const bookings =await Booking.find({user: req.user.id})
-
-
 const roomIds = bookings.map(book => book.room)
 const rooms = await Room.find({_id: {$in: roomIds}})
-
+// console.log(rooms);
   res.status(200).render('overview', {
-
     title: 'My Booked Rooms',
     rooms
   });

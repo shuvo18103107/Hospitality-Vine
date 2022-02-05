@@ -62,13 +62,9 @@ block content
             button.btn.btn-text#submitReview(data-room=`${room.id}`) Submit
   section.section-cta
     .cta
-      .cta__img.cta__img--logo
-        img(src='/img/logo-green-round.png' alt='Hotel Logo')
-      img.cta__img.cta__img--1(src=`/img/rooms/${room.images[1]}` alt='Room picture')
-      img.cta__img.cta__img--2(src=`/img/rooms/${room.images[2]}` alt='Room picture')
       .cta__content
-        h2.heading-secondary What are you waiting for?
-        p.cta__text=`${room.costPerNight}$ Only. ${room.priceDiscount}% Offer. Infinite features. Make it yours today!`
+        h2.heading-secondary Booked Room Now?
+        p.cta__text=`${room.costPerNight}$ Only. ${room.priceDiscount}% Offer. Make it yours today!`
         if user
           button.btn.btn--green.span-all-rows#book-room(data-room-id=`${room._id}`) Book room now!
         else

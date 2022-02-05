@@ -5,9 +5,8 @@ const Booking = require('./../models/bookingModel');
 const catchAsync = require('./../utilis/catchAsync');
 const factory = require('./../controllers/handlerFactory');
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
-
   const room = await Room.findById(req.params.roomID);
-
+  // 2) Create checkout session
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     success_url: `${req.protocol}://${req.get('host')}/my-rooms?alert=booking`,
@@ -16,10 +15,10 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     client_reference_id: req.params.roomID,
     line_items: [
       {
-        name: `${room.name} Room`,
+        name: `${room.name}`,
         description: room.summary,
         images: [`${req.protocol}://${req.get('host')}/img/rooms/${room.imageCover}`],
-        amount: room.price * 100,
+        amount: room.costPerNight * 100,
         currency: 'usd',
         quantity: 1
       }
@@ -48,7 +47,7 @@ const createBookingCheckout = async session => {
   }
 };
 
-exports.webhookCheckout = (req, res,next) => {
+exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
   let event;
   try {

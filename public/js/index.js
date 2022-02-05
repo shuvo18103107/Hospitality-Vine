@@ -103,6 +103,7 @@ if (ResetBtn) {
 if (bookBtn) {
   bookBtn.addEventListener('click', async e => {
     bookBtn.textContent = 'processing...⌛';
+
     const roomID = e.target.dataset.roomId;
     await bookRoom(roomID);
     bookBtn.textContent = 'Book Now';
